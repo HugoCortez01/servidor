@@ -281,3 +281,19 @@
 
 </body>
 </html>
+<script>
+    // DEFINA SUA SENHA AQUI
+    const SENHA_CORRETA = "2803"; 
+
+    // Esconde o conteúdo assim que carrega
+    document.body.style.display = "none";
+
+    const senhaDigitada = prompt("Para entrar no nosso mundinho, digite a senha (nossa data):");
+
+    if (senhaDigitada === SENHA_CORRETA) {
+        document.body.style.display = "block";
+    } else {
+        alert("Senha errada, safada! kkkk");
+        window.location.reload(); // Recarrega para pedir de novo
+    }
+</script>
