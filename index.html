@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Mundinho de Amor 💖</title>
+    <style>
+        /* Estilos Gerais */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff0f5; /* Rosa bebê clarinho */
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        h1, h2 {
+            font-family: 'Georgia', serif;
+            color: #d147a3; /* Rosa mais escuro */
+            text-align: center;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
+        }
+
+        /* Efeito de Corações Flutuantes */
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            background-color: rgba(209, 71, 163, 0.2);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); opacity: 0; }
+            50% { transform: translateY(-100vh); opacity: 1; }
+        }
+
+        .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .heart:nth-child(2) { left: 30%; animation-delay: 2s; }
+        .heart:nth-child(3) { left: 50%; animation-delay: 4s; }
+        .heart:nth-child(4) { left: 70%; animation-delay: 1s; }
+        .heart:nth-child(5) { left: 90%; animation-delay: 3s; }
+
+        /* --- Seções --- */
+
+        header {
+            background-image: url('foto_buque1.png'); 
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            z-index: 2;
+            color: rgba(255, 255, 255, 0.3); 
+            margin: 0;
+        }
+
+        .about {
+            padding: 80px 20px;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .about-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background-image: url('foto_perfil.png'); 
+            background-size: cover;
+            background-position: center;
+            border: 10px solid #fff0f5;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .about-text {
+            flex: 1;
+            max-width: 500px;
+            text-align: left;
+        }
+
+        .about-text h2 { text-align: left; margin-top: 0; }
+        .about-text p { text-align: left; padding: 0; }
+
+        .gallery {
+            padding: 80px 20px;
+            background-color: #fff0f5;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px; 
+            object-fit: cover;
+            display: block;
+        }
+
+        .details {
+            padding: 80px 20px;
+            background-color: white;
+        }
+
+        .details-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 30px;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .detail-card {
+            background-color: #fff0f5;
+            padding: 30px;
+            border-radius: 15px;
+            flex: 1;
+            min-width: 280px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .detail-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            margin-bottom: 15px;
+        }
+
+        .detail-card h3 { color: #d147a3; margin-top: 0; }
+
+        footer {
+            background-color: #d147a3;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            font-size: 0.9em;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="hearts">
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+    </div>
+
+    <header>
+       <header>
+    <div style="z-index: 2; text-align: center;">
+        <h1 style="margin: 0;">HUGO CORTEZ</h1>
+        <h1 style="margin: 0; font-size: 2em; color: #d147a3;">&</h1>
+        <h1 style="margin: 0;">JULIA RIZIERI</h1>
+    </div>
+</header>
+    </header>
+
+    <section class="about">
+        <div class="about-image"></div>
+        <div class="about-text">
+            <h2>Nossa História...</h2>
+            <p>"Não tem como eu descrever nossa historia em palavras ne kkkkk , existe coisas na minha vida que são inexplicaveis não consigo explicar como hj ainda estamos aki mais posso explicar o tanto que eu te amo isso sim e explicavel ja que vc e a mulher da minha vida a futura mae dos meus filhos "</p>
+        </div>
+    </section>
+
+    <section class="gallery">
+        <h2>Galeria do Nosso Amor 🥰</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="foto_capa.png"></div>
+            <div class="gallery-item"><img src="foto_perfil.png"></div>
+            <div class="gallery-item"><img src="foto_biquinho.png"></div>
+            <div class="gallery-item"><img src="foto_abraco.png"></div>
+            <div class="gallery-item"><img src="foto_sorriso.png"></div>
+            <div class="gallery-item"><img src="foto_buque1.png"></div>
+            <div class="gallery-item"><img src="foto_buque2.png"></div>
+            <div class="gallery-item"><img src="foto_detalhe.png"></div>
+            
+            <div class="gallery-item"><img src="extra_1.jpeg"></div>
+            <div class="gallery-item"><img src="extra_2.jpeg"></div>
+            <div class="gallery-item"><img src="extra_3.jpeg"></div>
+            <div class="gallery-item"><img src="extra_4.jpeg"></div>
+            <div class="gallery-item"><img src="extra_5.jpeg"></div>
+            <div class="gallery-item"><img src="extra_6.jpeg"></div>
+            <div class="gallery-item"><img src="extra_7.jpeg"></div>
+            <div class="gallery-item"><img src="extra_8.jpeg"></div>
+            <div class="gallery-item"><img src="extra_9.jpeg"></div>
+            <div class="gallery-item"><img src="extra_10.jpeg"></div>
+            <div class="gallery-item"><img src="extra_11.jpeg"></div>
+            <div class="gallery-item"><img src="extra_12.jpeg"></div>
+            <div class="gallery-item"><img src="extra_13.jpeg"></div>
+            <div class="gallery-item"><img src="extra_14.jpeg"></div>
+            <div class="gallery-item"><img src="extra_15.jpeg"></div>
+
+            
+        </div>
+    </section>
+
+    <section class="details">
+        <h2>Coisinhas que eu Amo em Você... ✨</h2>
+        <div class="details-container">
+            <div class="detail-card">
+                <img src="foto_sorriso.png" alt="Sorriso dela">
+                <h3>Sua carinha fofinha no sol</h3>
+                <p>"Aquele seu jeito espontâneo que me faz rir e me deixa louco por você. É a coisa mais linda desse mundo , esse rostinho no sol que me apaixona toda vez."</p>
+            </div>
+            <div class="detail-card">
+                <img src="foto_detalhe.png" alt="Detalhe do rosto">
+                <h3>Aki esta minha cara com espinha</h3>
+                <p>"A pessoa que mais espremeu espinha minha na vida kkk essa carinha que vc ama espremeu o dia inteiro e fica brava se eu n deixar ainda kkkkk"</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Feito para a mulher da minha vida. ❤️<br>Para sempre nós.</p>
+    </footer>
+
+</body>
+</html>
