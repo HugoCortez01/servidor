@@ -10,14 +10,15 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #fff0f5; /* Rosa bebê clarinho */
+            background-color: #fff0f5; 
             color: #333;
             overflow-x: hidden;
+            display: none; /* Escondido até validar a senha */
         }
 
         h1, h2 {
             font-family: 'Georgia', serif;
-            color: #d147a3; /* Rosa mais escuro */
+            color: #d147a3;
             text-align: center;
         }
 
@@ -31,38 +32,18 @@
             padding: 0 20px;
         }
 
+        /* Animação do Sininho */
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
+
         /* Efeito de Corações Flutuantes */
-        .hearts {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .heart {
-            position: absolute;
-            background-color: rgba(209, 71, 163, 0.2);
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            animation: float 10s infinite ease-in-out;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); opacity: 0; }
-            50% { transform: translateY(-100vh); opacity: 1; }
-        }
-
+        .hearts { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+        .heart { position: absolute; background-color: rgba(209, 71, 163, 0.2); width: 20px; height: 20px; border-radius: 50%; animation: float 10s infinite ease-in-out; }
+        @keyframes float { 0%, 100% { transform: translateY(0); opacity: 0; } 50% { transform: translateY(-100vh); opacity: 1; } }
         .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
         .heart:nth-child(2) { left: 30%; animation-delay: 2s; }
         .heart:nth-child(3) { left: 50%; animation-delay: 4s; }
         .heart:nth-child(4) { left: 70%; animation-delay: 1s; }
         .heart:nth-child(5) { left: 90%; animation-delay: 3s; }
-
-        /* --- Seções --- */
 
         header {
             background-image: url('foto_buque1.png'); 
@@ -76,131 +57,27 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
             position: relative;
         }
+        header::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.2); z-index: 1; }
 
-        header::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.2);
-            z-index: 1;
-        }
+        .about { padding: 80px 20px; background-color: white; display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap; }
+        .about-image { width: 250px; height: 250px; border-radius: 50%; background-image: url('foto_perfil.png'); background-size: cover; background-position: center; border: 10px solid #fff0f5; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .about-text { flex: 1; max-width: 500px; text-align: left; }
 
-        header h1 {
-            font-size: 3.5em;
-            z-index: 2;
-            color: rgba(255, 255, 255, 0.3); 
-            margin: 0;
-        }
+        .gallery { padding: 80px 20px; background-color: #fff0f5; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; max-width: 1200px; margin: 0 auto; }
+        .gallery-item { border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
+        .gallery-item:hover { transform: scale(1.05); }
+        .gallery-item img { width: 100%; height: 250px; object-fit: cover; display: block; }
 
-        .about {
-            padding: 80px 20px;
-            background-color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
+        .details { padding: 80px 20px; background-color: white; }
+        .details-container { display: flex; justify-content: center; align-items: flex-start; gap: 30px; flex-wrap: wrap; max-width: 1000px; margin: 0 auto; }
+        .detail-card { background-color: #fff0f5; padding: 30px; border-radius: 15px; flex: 1; min-width: 280px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; }
+        .detail-card img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 5px solid white; margin-bottom: 15px; }
 
-        .about-image {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            background-image: url('foto_perfil.png'); 
-            background-size: cover;
-            background-position: center;
-            border: 10px solid #fff0f5;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .about-text {
-            flex: 1;
-            max-width: 500px;
-            text-align: left;
-        }
-
-        .about-text h2 { text-align: left; margin-top: 0; }
-        .about-text p { text-align: left; padding: 0; }
-
-        .gallery {
-            padding: 80px 20px;
-            background-color: #fff0f5;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .gallery-item {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.05);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 250px; 
-            object-fit: cover;
-            display: block;
-        }
-
-        .details {
-            padding: 80px 20px;
-            background-color: white;
-        }
-
-        .details-container {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 30px;
-            flex-wrap: wrap;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .detail-card {
-            background-color: #fff0f5;
-            padding: 30px;
-            border-radius: 15px;
-            flex: 1;
-            min-width: 280px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            text-align: center;
-        }
-
-        .detail-card img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid white;
-            margin-bottom: 15px;
-        }
-
-        .detail-card h3 { color: #d147a3; margin-top: 0; }
-
-        footer {
-            background-color: #d147a3;
-            color: white;
-            text-align: center;
-            padding: 30px;
-            font-size: 0.9em;
-        }
-
+        footer { background-color: #d147a3; color: white; text-align: center; padding: 30px; font-size: 0.9em; }
     </style>
 </head>
 <body>
-    
     
     <div class="hearts">
         <div class="heart"></div>
@@ -211,13 +88,11 @@
     </div>
 
     <header>
-       <header>
-    <div style="z-index: 2; text-align: center;">
-        <h1 style="margin: 0;">HUGO CORTEZ</h1>
-        <h1 style="margin: 0; font-size: 2em; color: #d147a3;">&</h1>
-        <h1 style="margin: 0;">JULIA RIZIERI</h1>
-    </div>
-</header>
+        <div style="z-index: 2; text-align: center;">
+            <h1 style="margin: 0; color: white;">HUGO CORTEZ</h1>
+            <h1 style="margin: 0; font-size: 2em; color: #fff;">&</h1>
+            <h1 style="margin: 0; color: white;">JULIA RIZIERI</h1>
+        </div>
     </header>
 
     <section class="about">
@@ -234,155 +109,152 @@
             <div class="gallery-item"><img src="foto_capa.png"></div>
             <div class="gallery-item"><img src="foto_perfil.png"></div>
             <div class="gallery-item"><img src="foto_biquinho.png"></div>
-            <div class="gallery-item"><img src="foto_abraco.png"></div>
-            <div class="gallery-item"><img src="foto_sorriso.png"></div>
-            <div class="gallery-item"><img src="foto_buque1.png"></div>
-            <div class="gallery-item"><img src="foto_buque2.png"></div>
-            <div class="gallery-item"><img src="foto_detalhe.png"></div>
-            
-            <div class="gallery-item"><img src="extra_1.jpeg"></div>
-            <div class="gallery-item"><img src="extra_2.jpeg"></div>
-            <div class="gallery-item"><img src="extra_3.jpeg"></div>
-            <div class="gallery-item"><img src="extra_4.jpeg"></div>
-            <div class="gallery-item"><img src="extra_5.jpeg"></div>
             <div class="gallery-item"><img src="extra_6.jpeg"></div>
-            <div class="gallery-item"><img src="extra_7.jpeg"></div>
-            <div class="gallery-item"><img src="extra_8.jpeg"></div>
-            <div class="gallery-item"><img src="extra_9.jpeg"></div>
-            <div class="gallery-item"><img src="extra_10.jpeg"></div>
-            <div class="gallery-item"><img src="extra_11.jpeg"></div>
-            <div class="gallery-item"><img src="extra_12.jpeg"></div>
-            <div class="gallery-item"><img src="extra_13.jpeg"></div>
-            <div class="gallery-item"><img src="extra_14.jpeg"></div>
-            <div class="gallery-item"><img src="extra_15.jpeg"></div>
-
-            
-        </div>
+            </div>
     </section>
 
-    <section class="details">
-        <h2>Coisinhas que eu Amo em Você... ✨</h2>
-        <div class="details-container">
-            <div class="detail-card">
-                <img src="foto_sorriso.png" alt="Sorriso dela">
-                <h3>Sua carinha fofinha no sol</h3>
-                <p>"Aquele seu jeito espontâneo que me faz rir e me deixa louco por você. É a coisa mais linda desse mundo , esse rostinho no sol que me apaixona toda vez."</p>
-            </div>
-            <div class="detail-card">
-                <img src="foto_detalhe.png" alt="Detalhe do rosto">
-                <h3>Aki esta minha cara com espinha</h3>
-                <p>"A pessoa que mais espremeu espinha minha na vida kkk essa carinha que vc ama espremeu o dia inteiro e fica brava se eu n deixar ainda kkkkk"</p>
-            </div>
-        </div>
-    </section>
-
-  <section style="padding: 60px 20px; background-color: #fff; border-top: 2px solid #fff0f5;">
-    <h2 style="color: #d147a3;">Nosso Diário ✨</h2>
-    
-    <div style="max-width: 500px; margin: 0 auto 40px; background: #fff0f5; padding: 20px; border-radius: 20px;">
-        <textarea id="textoDoRegistro" placeholder="Escreva algo..." style="width: 100%; padding: 12px; border-radius: 15px; border: 1px solid #ddd; outline: none; margin-bottom: 10px;" rows="2"></textarea>
+    <section id="diario-section" style="padding: 60px 20px; background-color: #fff; border-top: 2px solid #fff0f5;">
+        <h2 style="color: #d147a3; display: flex; align-items: center; justify-content: center; gap: 10px;">
+            Nosso Diário ✨ 
+            <span id="sininho" style="display: none; background: #ff0000; color: white; font-size: 12px; padding: 3px 8px; border-radius: 50%; animation: pulse 1s infinite;">!</span>
+        </h2>
         
-        <div style="display: flex; gap: 10px;">
-            <label for="inputFoto" style="background: #eee; padding: 10px; border-radius: 50%; cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
-                📷 <input type="file" id="inputFoto" accept="image/*" style="display: none;">
-            </label>
-            <button onclick="registrarTudo()" id="btnEnviar" style="flex: 1; background: #d147a3; color: white; border: none; border-radius: 25px; font-weight: bold; cursor: pointer;">Registrar no Mural</button>
-        </div>
-        <p id="statusUpload" style="font-size: 0.7em; color: #d147a3; margin-top: 5px; display: none;">Enviando registro...</p>
-    </div>
+        <div style="max-width: 500px; margin: 0 auto 40px; background: #fff0f5; padding: 20px; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+            <select id="seletorAutor" style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 10px; outline: none; font-family: inherit;">
+                <option value="Hugo">🙋‍♂️ Hugo (Azul)</option>
+                <option value="Julia">🙋‍♀️ Julia (Rosa)</option>
+            </select>
 
-    <div id="historicoMural" style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px;"></div>
-</section>
-
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-
-<script>
-    const config = { databaseURL: "https://site-julia-4d59d-default-rtdb.firebaseio.com/" }; 
-    firebase.initializeApp(config);
-    const banco = firebase.database();
-
-    // COLOQUE SUA CHAVE DO IMGBB AQUI
-    const CHAVE_IMGBB = "f8f6ad9198737f558c7bb1d530a76e99";
-
-    async function registrarTudo() {
-        const texto = document.getElementById('textoDoRegistro').value;
-        const fotoFile = document.getElementById('inputFoto').files[0];
-        const btn = document.getElementById('btnEnviar');
-        const status = document.getElementById('statusUpload');
-
-        if (!texto.trim() && !fotoFile) return;
-        
-        btn.disabled = true;
-        status.style.display = "block";
-        let urlFinal = "";
-
-        // Se tiver foto, envia pro ImgBB primeiro
-        if (fotoFile) {
-            const formData = new FormData();
-            formData.append("image", fotoFile);
+            <textarea id="textoDoRegistro" placeholder="O que você quer registrar hoje?" style="width: 100%; padding: 12px; border-radius: 15px; border: 1px solid #ddd; outline: none; margin-bottom: 10px; font-family: inherit; box-sizing: border-box;" rows="2"></textarea>
             
-            try {
-                const response = await fetch(`https://api.imgbb.com/1/upload?key=${CHAVE_IMGBB}`, {
-                    method: "POST",
-                    body: formData
-                });
-                const data = await response.json();
-                urlFinal = data.data.url;
-            } catch (error) {
-                alert("Erro ao subir a foto. Tente novamente.");
-            }
-        }
+            <div style="display: flex; gap: 10px;">
+                <label for="inputFoto" style="background: #eee; padding: 10px; border-radius: 50%; cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                    📷 <input type="file" id="inputFoto" accept="image/*" style="display: none;">
+                </label>
+                <button onclick="registrarTudo()" id="btnEnviar" style="flex: 1; background: #d147a3; color: white; border: none; border-radius: 25px; font-weight: bold; cursor: pointer;">Registrar</button>
+            </div>
+            <p id="statusUpload" style="font-size: 0.7em; color: #d147a3; margin-top: 5px; display: none;">Enviando registro...</p>
+        </div>
 
-        const agora = new Date();
-        banco.ref('diario').push({ 
-            texto: texto, 
-            foto: urlFinal,
-            data: agora.toLocaleDateString('pt-BR'),
-            hora: agora.toLocaleTimeString('pt-BR', {hour: '2-digit', minute:'2-digit'}),
-            tempo: Date.now() 
-        });
-
-        document.getElementById('textoDoRegistro').value = "";
-        document.getElementById('inputFoto').value = "";
-        status.style.display = "none";
-        btn.disabled = false;
-    }
-
-    banco.ref('diario').orderByChild('tempo').on('value', (snapshot) => {
-        const mural = document.getElementById('historicoMural');
-        mural.innerHTML = "";
-        let itens = [];
-        snapshot.forEach(item => { itens.push(item.val()); });
-        itens.reverse().forEach(post => {
-            mural.innerHTML += `
-                <div style="background: white; padding: 20px; border-radius: 15px; border-left: 5px solid #d147a3; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: left;">
-                    <span style="font-size: 0.75em; color: #d147a3; font-weight: bold;">${post.data} às ${post.hora}</span>
-                    ${post.foto ? `<img src="${post.foto}" style="width:100%; border-radius:10px; margin: 10px 0;">` : ''}
-                    <p style="color: #444; margin-top: 5px; margin-bottom: 0;">${post.texto}</p>
-                </div>`;
-        });
-    });
-</script>
+        <div id="historicoMural" style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px;"></div>
+    </section>
 
     <footer>
         <p>Feito para a mulher da minha vida. ❤️<br>Para sempre nós.</p>
     </footer>
-<script>
-    // DEFINA SUA SENHA AQUI
-    const SENHA_CORRETA = "280325"; 
 
-    // Esconde o conteúdo assim que carrega
-    document.body.style.display = "none";
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 
-    const senhaDigitada = prompt("Para entrar no nosso mundinho, digite a senha (nossa data):");
+    <script>
+        // LOGIN COM MEMÓRIA
+        const SENHA_CORRETA = "280325";
+        if (localStorage.getItem('acessoGarantido') === 'true') {
+            document.body.style.display = "block";
+        } else {
+            const senhaDigitada = prompt("Para entrar no nosso mundinho, digite a senha (nossa data):");
+            if (senhaDigitada === SENHA_CORRETA) {
+                localStorage.setItem('acessoGarantido', 'true');
+                document.body.style.display = "block";
+            } else {
+                alert("Senha errada, safada! kkkk");
+                window.location.reload();
+            }
+        }
 
-    if (senhaDigitada === SENHA_CORRETA) {
-        document.body.style.display = "block";
-    } else {
-        alert("Senha errada, safada! kkkk");
-        window.location.reload(); // Recarrega para pedir de novo
-    }
-</script>
+        // FIREBASE CONFIG
+        const config = { databaseURL: "https://site-julia-4d59d-default-rtdb.firebaseio.com/" }; 
+        firebase.initializeApp(config);
+        const banco = firebase.database();
+        const CHAVE_IMGBB = "f8f6ad9198737f558c7bb1d530a76e99";
+
+        async function registrarTudo() {
+            const autor = document.getElementById('seletorAutor').value;
+            const texto = document.getElementById('textoDoRegistro').value;
+            const fotoFile = document.getElementById('inputFoto').files[0];
+            const btn = document.getElementById('btnEnviar');
+            const status = document.getElementById('statusUpload');
+
+            if (!texto.trim() && !fotoFile) return;
+            
+            btn.disabled = true;
+            status.style.display = "block";
+            let urlFinal = "";
+
+            if (fotoFile) {
+                const formData = new FormData();
+                formData.append("image", fotoFile);
+                try {
+                    const response = await fetch(`https://api.imgbb.com/1/upload?key=${CHAVE_IMGBB}`, { method: "POST", body: formData });
+                    const data = await response.json();
+                    urlFinal = data.data.url;
+                } catch (error) {
+                    alert("Erro ao subir a foto.");
+                }
+            }
+
+            const agora = Date.now();
+            banco.ref('diario').push({ 
+                autor: autor,
+                texto: texto, 
+                foto: urlFinal,
+                data: new Date().toLocaleDateString('pt-BR'),
+                hora: new Date().toLocaleTimeString('pt-BR', {hour: '2-digit', minute:'2-digit'}),
+                tempo: agora 
+            });
+
+            document.getElementById('textoDoRegistro').value = "";
+            document.getElementById('inputFoto').value = "";
+            status.style.display = "none";
+            btn.disabled = false;
+            
+            // Marca como lido para quem postou
+            localStorage.setItem('vistoPorUltimo', agora);
+        }
+
+        banco.ref('diario').orderByChild('tempo').on('value', (snapshot) => {
+            const mural = document.getElementById('historicoMural');
+            const sininho = document.getElementById('sininho');
+            mural.innerHTML = "";
+            let itens = [];
+            let maiorTempo = 0;
+
+            snapshot.forEach(item => { 
+                const d = item.val();
+                itens.push(d);
+                if(d.tempo > maiorTempo) maiorTempo = d.tempo;
+            });
+
+            // Lógica do Sininho
+            const ultimaVez = localStorage.getItem('vistoPorUltimo') || 0;
+            if (maiorTempo > ultimaVez) {
+                sininho.style.display = "inline-block";
+            }
+
+            itens.reverse().forEach(post => {
+                const ehHugo = post.autor === "Hugo";
+                const corBorda = ehHugo ? '#007bff' : '#d147a3'; // Azul para você, Rosa para ela
+                const corNome = ehHugo ? '#0056b3' : '#d147a3';
+
+                mural.innerHTML += `
+                    <div style="background: white; padding: 20px; border-radius: 15px; border-left: 8px solid ${corBorda}; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: left; margin-bottom: 5px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <span style="font-size: 0.8em; font-weight: bold; color: ${corNome}; text-transform: uppercase;">
+                                ${ehHugo ? '🙋‍♂️ Hugo' : '🙋‍♀️ Julia'}
+                            </span>
+                            <span style="font-size: 0.7em; color: #999;">${post.data} às ${post.hora}</span>
+                        </div>
+                        ${post.foto ? `<img src="${post.foto}" style="width:100%; border-radius:10px; margin-bottom: 10px;">` : ''}
+                        <p style="color: #444; margin: 0; line-height: 1.5; font-size: 1.05em;">${post.texto}</p>
+                    </div>`;
+            });
+        });
+
+        // Remove notificação ao clicar no diário
+        document.getElementById('diario-section').addEventListener('click', () => {
+            localStorage.setItem('vistoPorUltimo', Date.now());
+            document.getElementById('sininho').style.display = "none";
+        });
+    </script>
 </body>
 </html>
